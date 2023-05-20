@@ -1,3 +1,4 @@
 const a = {
-          name:"david"
+          name:"david",
+          age :23
 }
