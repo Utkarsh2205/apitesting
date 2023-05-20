@@ -1,1 +1,3 @@
-const a = {}
+const a = {
+          name:"david"
+}
