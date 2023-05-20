@@ -2,5 +2,6 @@ const a = {
           name:"david",
           age :23,
           city :"rahul",
-          gender:"Male"
+          gender:"Male",
+          adb:"asd"
 }
