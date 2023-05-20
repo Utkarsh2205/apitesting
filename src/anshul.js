@@ -1,4 +1,5 @@
 const a = {
           name:"david",
-          age :23
+          age :23,
+          city :"rahul"
 }
