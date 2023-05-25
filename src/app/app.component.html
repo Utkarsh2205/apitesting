@@ -1,10 +1,18 @@
-<button class="btn btn-secondary" *ngIf="showRegister || showTable" (click)="backBtn()"><i class="fa-solid fa-arrow-left"></i> BACK</button>
-<div class="container">
-  <div class="row">
-    <div class="col displayer" id="signindiv">
-      <br />
-      
-      <!-- <div class="col-sm mb-3">
+<div class="container ">
+  <button
+    class="btn btn-secondary"
+    *ngIf="showRegister || showTable"
+    (click)="backBtn()"
+  >
+    <i class="fa-solid fa-arrow-left"></i> BACK
+  </button>
+
+  <div class="container">
+    <div class="row">
+      <div class="col displayer" id="signindiv">
+        <br />
+
+        <!-- <div class="col-sm mb-3">
         <label for="formGroupExampleInput" class="form-label">Username</label>
         <input
           type="text"
@@ -23,23 +31,140 @@
           placeholder=""
         />
       </div> -->
-      <button class="btn btn-primary" id="signin" (click)="onClickShowUsers()">Show Users</button>
-      <br>
-      <hr>
-      <button class="btn btn-primary" (click)="clicksignin()">Register Here.</button> 
-    </div>
-    <br>
-    
+        <button
+          class="btn btn-primary"
+          id="signin"
+          (click)="onClickShowUsers()"
+        >
+          Show Users
+        </button>
+        <br />
+        <hr />
+        <button class="btn btn-primary" (click)="clicksignin()">
+          Register Here.
+        </button>
+      </div>
+      <br />
 
-    <div *ngIf="showRegister" class="col" id="registerdiv" >
+      <div *ngIf="showRegister" class="col" id="registerdiv">
+        <div class="col-sm mb-3">
+          <br />
+
+          <label for="formGroupExampleInput" class="form-label">Name</label>
+          <input
+            type="text"
+            [(ngModel)]="name"
+            class="form-control form-control-sm"
+            id="formGroupExampleInput"
+            placeholder=""
+          />
+        </div>
+
+        <div class="col-sm mb-3">
+          <label for="formGroupExampleInput2" class="form-label"
+            >Date of Birth</label
+          >
+          <input
+            type="text"
+            [(ngModel)]="dob"
+            class="form-control form-control-sm"
+            id="formGroupExampleInput2"
+            placeholder=""
+          />
+        </div>
+
+        <div class="col-sm mb-3">
+          <label for="formGroupExampleInput3" class="form-label">School</label>
+          <input
+            type="text"
+            [(ngModel)]="school"
+            class="form-control form-control-sm"
+            id="formGroupExampleInput2"
+            placeholder=""
+          />
+        </div>
+
+        <div class="col-sm mb-3">
+          <label for="formGroupExampleInput4" class="form-label">College</label>
+          <input
+            type="text"
+            [(ngModel)]="college"
+            class="form-control form-control-sm"
+            id="formGroupExampleInput2"
+            placeholder=""
+          />
+        </div>
+        <div class="col-sm mb-3">
+          <label for="formGroupExampleInput5" class="form-label">Email</label>
+          <input
+            type="text"
+            class="form-control form-control-sm"
+            [(ngModel)]="email"
+            id="formGroupExampleInput2"
+            placeholder=""
+          />
+        </div>
+        <button
+          class="btn btn-success"
+          id="register"
+          (click)="onClickRegister()"
+        >
+          REGISTER
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="div" *ngIf="showTable">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">NAME</th>
+          <th scope="col">DOB</th>
+          <th scope="col">SCHOOL</th>
+          <th scope="col">COLEGE</th>
+          <th scope="col">EMAIL</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of Users; index as i">
+          <th scope="row">{{ user.id }}</th>
+
+          <td>{{ user.name }}</td>
+          <td>{{ user.dob }}</td>
+          <td>{{ user.school }}</td>
+          <td>{{ user.college }}</td>
+          <td>{{ user.email }}</td>
+
+          <td>
+            <i
+              class="fa-solid fa-pen"
+              style="color: blue; cursor: pointer"
+              (click)="updateuserdata(user)"
+            ></i>
+          </td>
+          <td>
+            <i
+              class="fa-solid fa-trash"
+              style="color: red; cursor: pointer"
+              (click)="deleteuserdata(user)"
+            ></i>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="div">
+    <div *ngIf="showUpdateForm" class="col" id="up_registerdiv">
       <div class="col-sm mb-3">
-       
         <br />
 
-        <label for="formGroupExampleInput" class="form-label">Name</label>
+        <label for="up_formGroupExampleInput" class="form-label">Name</label>
         <input
           type="text"
-          [(ngModel)]=" name"
+          [(ngModel)]="up_name"
           class="form-control form-control-sm"
           id="formGroupExampleInput"
           placeholder=""
@@ -47,12 +172,12 @@
       </div>
 
       <div class="col-sm mb-3">
-        <label for="formGroupExampleInput2" class="form-label"
+        <label for="up_formGroupExampleInput2" class="form-label"
           >Date of Birth</label
         >
         <input
           type="text"
-          [(ngModel)]=" dob"
+          [(ngModel)]="up_dob"
           class="form-control form-control-sm"
           id="formGroupExampleInput2"
           placeholder=""
@@ -60,10 +185,10 @@
       </div>
 
       <div class="col-sm mb-3">
-        <label for="formGroupExampleInput3" class="form-label">School</label>
+        <label for="up_formGroupExampleInput3" class="form-label">School</label>
         <input
           type="text"
-          [(ngModel)]=" school"
+          [(ngModel)]="up_school"
           class="form-control form-control-sm"
           id="formGroupExampleInput2"
           placeholder=""
@@ -71,129 +196,104 @@
       </div>
 
       <div class="col-sm mb-3">
-        <label for="formGroupExampleInput4" class="form-label">College</label>
+        <label for="up_formGroupExampleInput4" class="form-label"
+          >College</label
+        >
         <input
           type="text"
-          [(ngModel)]="college"
+          [(ngModel)]="up_college"
           class="form-control form-control-sm"
           id="formGroupExampleInput2"
           placeholder=""
         />
       </div>
       <div class="col-sm mb-3">
-        <label for="formGroupExampleInput5" class="form-label">Email</label>
+        <label for="up_formGroupExampleInput5" class="form-label">Email</label>
         <input
           type="text"
           class="form-control form-control-sm"
-          [(ngModel)]=" email"
+          [(ngModel)]="up_email"
           id="formGroupExampleInput2"
           placeholder=""
         />
       </div>
-      <button class="btn btn-success" id="register" (click)="onClickRegister()">REGISTER</button>
-    </div>
-  </div>
-</div>
-
-
-<div class="div" *ngIf="showTable">
-
-
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">NAME</th>
-        <th scope="col">DOB</th>
-        <th scope="col">SCHOOL</th>
-        <th scope="col">COLEGE</th>
-        <th scope="col">EMAIL</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr  *ngFor="let user of Users; index as i">
-        <th scope="row">{{user.id}}</th>
-        
-        <td>{{user.name}}</td>
-        <td>{{user.dob}}</td>
-        <td>{{user.school}}</td>
-        <td>{{user.college}}</td>
-        <td>{{user.email}}</td>
-      
-        <td>   <i class="fa-solid fa-pen " style="color:blue; cursor:pointer;" (click)="updateuserdata(user)"></i>    </td>
-        <td>  <i class="fa-solid fa-trash " style="color:red; cursor: pointer;" (click)="deleteuserdata(user)"></i>  </td>
-
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-
-<div class="div">
-     
-    
-  <div *ngIf="showUpdateForm" class="col" id="up_registerdiv" >
-    <div class="col-sm mb-3">
-     
-      <br />
-
-      <label for="up_formGroupExampleInput" class="form-label">Name</label>
-      <input
-        type="text"
-        [(ngModel)]=" up_name"
-        class="form-control form-control-sm"
-        id="formGroupExampleInput"
-        placeholder=""
-      />
-    </div>
-
-    <div class="col-sm mb-3">
-      <label for="up_formGroupExampleInput2" class="form-label"
-        >Date of Birth</label
+      <button
+        class="btn btn-success"
+        id="up_register"
+        (click)="onClickUpdate()"
       >
-      <input
-        type="text"
-        [(ngModel)]=" up_dob"
-        class="form-control form-control-sm"
-        id="formGroupExampleInput2"
-        placeholder=""
-      />
+        Update
+      </button>
     </div>
-
-    <div class="col-sm mb-3">
-      <label for="up_formGroupExampleInput3" class="form-label">School</label>
-      <input
-        type="text"
-        [(ngModel)]=" up_school"
-        class="form-control form-control-sm"
-        id="formGroupExampleInput2"
-        placeholder=""
-      />
-    </div>
-
-    <div class="col-sm mb-3">
-      <label for="up_formGroupExampleInput4" class="form-label">College</label>
-      <input
-        type="text"
-        [(ngModel)]="up_college"
-        class="form-control form-control-sm"
-        id="formGroupExampleInput2"
-        placeholder=""
-      />
-    </div>
-    <div class="col-sm mb-3">
-      <label for="up_formGroupExampleInput5" class="form-label">Email</label>
-      <input
-        type="text"
-        class="form-control form-control-sm"
-        [(ngModel)]=" up_email"
-        id="formGroupExampleInput2"
-        placeholder=""
-      />
-    </div>
-    <button class="btn btn-success" id="up_register" (click)="onClickUpdate()">Update</button>
   </div>
+  <div class="div">
+    <div *ngIf="showDeleteForm" class="col" id="up_registerdiv">
+      <div class="col-sm mb-3">
+        <br />
 
+        <label for="up_formGroupExampleInput" class="form-label">Name</label>
+        <input
+          type="text"
+          [(ngModel)]="up_name"
+          class="form-control form-control-sm"
+          id="formGroupExampleInput"
+          placeholder=""
+        />
+      </div>
 
+      <div class="col-sm mb-3">
+        <label for="up_formGroupExampleInput2" class="form-label"
+          >Date of Birth</label
+        >
+        <input
+          type="text"
+          [(ngModel)]="up_dob"
+          class="form-control form-control-sm"
+          id="formGroupExampleInput2"
+          placeholder=""
+        />
+      </div>
 
+      <div class="col-sm mb-3">
+        <label for="up_formGroupExampleInput3" class="form-label">School</label>
+        <input
+          type="text"
+          [(ngModel)]="up_school"
+          class="form-control form-control-sm"
+          id="formGroupExampleInput2"
+          placeholder=""
+        />
+      </div>
+
+      <div class="col-sm mb-3">
+        <label for="up_formGroupExampleInput4" class="form-label"
+          >College</label
+        >
+        <input
+          type="text"
+          [(ngModel)]="up_college"
+          class="form-control form-control-sm"
+          id="formGroupExampleInput2"
+          placeholder=""
+        />
+      </div>
+      <div class="col-sm mb-3">
+        <label for="up_formGroupExampleInput5" class="form-label">Email</label>
+        <input
+          type="text"
+          class="form-control form-control-sm"
+          [(ngModel)]="up_email"
+          id="formGroupExampleInput2"
+          placeholder=""
+        />
+      </div>
+      <button
+        class="btn btn-success"
+        id="up_register"
+        (click)="onClickDelete()"
+      >
+        Delete
+      </button>
+    </div>
+  </div>
 </div>

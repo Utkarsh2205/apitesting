@@ -1,36 +1,20 @@
 {
   "users": [
     {
-      "id": 1,
-      "name": "Utkash",
-      "dob": "22 may 2023",
-      "email": "abc.com",
-      "school": "Kv NRC",
-      "college": "GGSIPU"
+      "name": "RK SHARMA",
+      "school": "Army School",
+      "college": "ggsf",
+      "dob": "2 may 2023",
+      "email": "rks.com",
+      "id": 1
     },
     {
       "id": 2,
-      "name": "DIvyansh kumar sharma",
-      "dob": "2 may 2023",
-      "email": "abc.com",
-      "school": "Kv NRC",
-      "college": "GGSIPU"
-    },
-    {
-      "id": 3,
-      "name": "mansi vats",
-      "dob": "1305200",
-      "email": "mansi.com",
-      "school": "kv",
-      "college": "ggs"
-    },
-    {
-      "name": "rakharp",
-      "school": "kvskv",
-      "college": "ggskoc",
-      "dob": "130520244",
-      "email": "prakharmansi.com",
-      "id": 4
+      "name": "KK SHARMA",
+      "dob": "3 july 2023",
+      "email": "Kks.com",
+      "school": "Public School",
+      "college": "GGSF"
     }
   ]
 }
